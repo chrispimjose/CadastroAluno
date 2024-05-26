@@ -19,6 +19,7 @@ public class AlunoController {
     // Método para criar uma lista de alunos obtidas no banco de dados
     public ArrayList<Aluno> getAlunos() {
         // Cria o objeto lista de alunos
+        //ToDo O erro está nessa linha
         ArrayList<Aluno> alunos = new ArrayList<>();
         // Gera o SQL da consulta aos dados do banco
         String sql = "SELECT ID, Nome, CPF, Idade, Curso, Fase FROM alunos";
