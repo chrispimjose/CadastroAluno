@@ -94,11 +94,6 @@
                           </Group>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="ga_Mensagem" min="-2" pref="644" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="284" max="-2" attributes="0"/>
-                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -145,11 +140,8 @@
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="41" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="ga_Mensagem" min="-2" pref="26" max="-2" attributes="0"/>
-                  <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+              <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -262,12 +254,13 @@
     <Component class="javax.swing.JComboBox" name="ga_Curso">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="5">
-            <StringItem index="0" value="ADS"/>
-            <StringItem index="1" value="Ci&#xea;ncia da Computa&#xe7;&#xe3;o"/>
-            <StringItem index="2" value="GTI"/>
-            <StringItem index="3" value="Jogos Digitais"/>
-            <StringItem index="4" value="Sistema da Informa&#xe7;&#xe3;o"/>
+          <StringArray count="6">
+            <StringItem index="0" value=" "/>
+            <StringItem index="1" value="ADS"/>
+            <StringItem index="2" value="Ci&#xea;ncia da Computa&#xe7;&#xe3;o"/>
+            <StringItem index="3" value="GTI"/>
+            <StringItem index="4" value="Jogos Digitais"/>
+            <StringItem index="5" value="Sistema da Informa&#xe7;&#xe3;o"/>
           </StringArray>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -279,15 +272,16 @@
     <Component class="javax.swing.JComboBox" name="ga_Serie">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="8">
-            <StringItem index="0" value="Primeira"/>
-            <StringItem index="1" value="Segunda"/>
-            <StringItem index="2" value="Terceira"/>
-            <StringItem index="3" value="Quarta"/>
-            <StringItem index="4" value="Quinta"/>
-            <StringItem index="5" value="Sexta"/>
-            <StringItem index="6" value="S&#xe9;tima"/>
-            <StringItem index="7" value="Oitavo"/>
+          <StringArray count="9">
+            <StringItem index="0" value=" "/>
+            <StringItem index="1" value="Primeira"/>
+            <StringItem index="2" value="Segunda"/>
+            <StringItem index="3" value="Terceira"/>
+            <StringItem index="4" value="Quarta"/>
+            <StringItem index="5" value="Quinta"/>
+            <StringItem index="6" value="Sexta"/>
+            <StringItem index="7" value="S&#xe9;tima"/>
+            <StringItem index="8" value="Oitavo"/>
           </StringArray>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -314,11 +308,6 @@
     <Component class="javax.swing.JButton" name="ga_AtualizaLista">
       <Properties>
         <Property name="text" type="java.lang.String" value="Atualiza a Lista"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="ga_Mensagem">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">

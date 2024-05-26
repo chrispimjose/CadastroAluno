@@ -40,7 +40,6 @@ public class GerAluno extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         ga_AtualizaLista = new javax.swing.JButton();
-        ga_Mensagem = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -85,10 +84,10 @@ public class GerAluno extends javax.swing.JFrame {
         ga_IdadeAluno.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         ga_IdadeAluno.setToolTipText("");
 
-        ga_Curso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADS", "Ciência da Computação", "GTI", "Jogos Digitais", "Sistema da Informação" }));
+        ga_Curso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "ADS", "Ciência da Computação", "GTI", "Jogos Digitais", "Sistema da Informação" }));
         ga_Curso.setToolTipText("");
 
-        ga_Serie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Primeira", "Segunda", "Terceira", "Quarta", "Quinta", "Sexta", "Sétima", "Oitavo" }));
+        ga_Serie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Primeira", "Segunda", "Terceira", "Quarta", "Quinta", "Sexta", "Sétima", "Oitavo" }));
         ga_Serie.setToolTipText("");
 
         jButton1.setText("Editar");
@@ -98,8 +97,6 @@ public class GerAluno extends javax.swing.JFrame {
         jButton3.setText("Apagar");
 
         ga_AtualizaLista.setText("Atualiza a Lista");
-
-        ga_Mensagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("CPF");
@@ -159,11 +156,7 @@ public class GerAluno extends javax.swing.JFrame {
                                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(ga_AtualizaLista, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(35, 35, 35))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ga_Mensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(284, 284, 284)))
+                                .addGap(35, 35, 35)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -199,10 +192,8 @@ public class GerAluno extends javax.swing.JFrame {
                     .addComponent(ga_Serie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ga_Mensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
-                .addGap(23, 23, 23))
+                .addComponent(jButton3)
+                .addGap(26, 26, 26))
         );
 
         pack();
@@ -257,7 +248,6 @@ public class GerAluno extends javax.swing.JFrame {
     private javax.swing.JButton ga_AtualizaLista;
     private javax.swing.JComboBox<String> ga_Curso;
     private javax.swing.JTextField ga_IdadeAluno;
-    private javax.swing.JLabel ga_Mensagem;
     private javax.swing.JTextField ga_NomeAluno;
     private javax.swing.JComboBox<String> ga_Serie;
     private javax.swing.JTable ga_TabAlunos;

@@ -4,6 +4,8 @@
  */
 package View;
 
+import javax.swing.JOptionPane;
+
 import Controller.InsereAluno;
 import Model.Aluno;
 
@@ -38,9 +40,9 @@ public class CadAluno extends javax.swing.JFrame {
         ca_CursoAluno = new javax.swing.JComboBox<>();
         ca_SerieAluno = new javax.swing.JComboBox<>();
         javax.swing.JButton ca_InserirDados = new javax.swing.JButton();
-        ca_Mensagem = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         ca_CPF = new javax.swing.JTextField();
+        ca_Novo = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         ca_VoltarPrinc = new javax.swing.JMenuItem();
@@ -59,9 +61,14 @@ public class CadAluno extends javax.swing.JFrame {
 
         ca_IdadeAluno.setToolTipText("");
 
-        ca_CursoAluno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADS", "Ciência da Computação", "GTI", "Jogos Digitais", "Sistema da Informação" }));
+        ca_CursoAluno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "ADS", "Ciência da Computação", "GTI", "Jogos Digitais", "Sistema da Informação" }));
 
-        ca_SerieAluno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Primeira", "Segunda", "Terceira", "Quarta", "Quinta", "Sexta", "Sétima", "Oitavo" }));
+        ca_SerieAluno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Primeira", "Segunda", "Terceira", "Quarta", "Quinta", "Sexta", "Sétima", "Oitavo" }));
+        ca_SerieAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ca_SerieAlunoActionPerformed(evt);
+            }
+        });
 
         ca_InserirDados.setText("Inserir");
         ca_InserirDados.addActionListener(new java.awt.event.ActionListener() {
@@ -69,8 +76,6 @@ public class CadAluno extends javax.swing.JFrame {
                 ca_InserirDadosActionPerformed(evt);
             }
         });
-
-        ca_Mensagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("CPF");
@@ -80,6 +85,13 @@ public class CadAluno extends javax.swing.JFrame {
         ca_CPF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ca_CPFActionPerformed(evt);
+            }
+        });
+
+        ca_Novo.setText("Novo");
+        ca_Novo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ca_NovoActionPerformed(evt);
             }
         });
 
@@ -105,29 +117,26 @@ public class CadAluno extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(50, 50, 50)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(ca_NomeAluno)
-                                    .addComponent(ca_IdadeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ca_SerieAluno, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(ca_CursoAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ca_CPF, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(ca_Mensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 563, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(ca_NomeAluno)
+                            .addComponent(ca_IdadeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ca_SerieAluno, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ca_CursoAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ca_CPF, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(255, 255, 255)
-                        .addComponent(ca_InserirDados, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(44, Short.MAX_VALUE))
+                        .addGap(120, 120, 120)
+                        .addComponent(ca_InserirDados, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(99, 99, 99)
+                        .addComponent(ca_Novo, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,11 +161,11 @@ public class CadAluno extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ca_SerieAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addComponent(ca_Mensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ca_InserirDados)
-                .addGap(35, 35, 35))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ca_InserirDados)
+                    .addComponent(ca_Novo))
+                .addGap(34, 34, 34))
         );
 
         pack();
@@ -177,7 +186,7 @@ public class CadAluno extends javax.swing.JFrame {
 
         /*
         /Cria uma propriedade de mensagem de retorno
-        /Essa propriedade recebe a menagem e apresenta no
+        /Essa propriedade recebe a mensagem e apresenta no
         /label ca_Mensagem
         */
 
@@ -196,13 +205,11 @@ public class CadAluno extends javax.swing.JFrame {
         //Chama o método no Controller para inserir e validar os dados
        mensagem = InsereAluno.InsAluno(aluno);
         
-       //Recebe a mensagem de retorno e apresenta no label ca_Mensagem
-        ca_Mensagem.setText(mensagem);
-        for (int i = 0; i < 1000; i++) {
-            // Após um tempo, limpa a caixa de diálogo
-            mensagem="";
-            ca_Mensagem.setText(mensagem);
-        }      
+       //Recebe a mensagem de retorno e apresenta em uma messagebox
+        JOptionPane.showMessageDialog(null, mensagem, "Mensagem",
+                JOptionPane.INFORMATION_MESSAGE);
+
+        setVisible(true);           
         
         
     }//GEN-LAST:event_ca_InserirDadosActionPerformed
@@ -210,6 +217,22 @@ public class CadAluno extends javax.swing.JFrame {
     private void ca_CPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ca_CPFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ca_CPFActionPerformed
+
+    private void ca_SerieAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ca_SerieAlunoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ca_SerieAlunoActionPerformed
+
+    private void ca_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ca_NovoActionPerformed
+        // Prepara o forma para cadastrar um novo aluno
+
+        // Limpas os objetos da interface para novo lançamento
+        ca_NomeAluno.setText("");
+        ca_CPF.setText("");
+        ca_IdadeAluno.setText("");
+        ca_CursoAluno.setSelectedIndex(0);
+        ca_SerieAluno.setSelectedIndex(0);        
+        
+    }//GEN-LAST:event_ca_NovoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -250,8 +273,8 @@ public class CadAluno extends javax.swing.JFrame {
     private javax.swing.JTextField ca_CPF;
     private javax.swing.JComboBox<String> ca_CursoAluno;
     private javax.swing.JTextField ca_IdadeAluno;
-    private javax.swing.JLabel ca_Mensagem;
     private javax.swing.JTextField ca_NomeAluno;
+    private javax.swing.JButton ca_Novo;
     private javax.swing.JComboBox<String> ca_SerieAluno;
     private javax.swing.JMenuItem ca_VoltarPrinc;
     private javax.swing.JLabel jLabel1;
