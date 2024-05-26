@@ -25,7 +25,7 @@ public class ValidaCPF {
 
         // Verifica se o primeiro dígito verificador é igual ao informado no CPF
         if (primDigit != (CPF.charAt(9) - '0')) {
-            mensagem = "CPF inválido no primeiro dígito verificador.";
+            mensagem = "error1";
             return mensagem;
         }
 
@@ -41,8 +41,10 @@ public class ValidaCPF {
 
         // Verifica se o segundo dígito verificador é igual ao informado no CPF
         if (segundDigit != (CPF.charAt(10) - '0')) {
-            mensagem = "CPF inválido no segundo dígito verificador.";
+            mensagem = "error2";
+            return mensagem;
         }
+        mensagem = "CPF válido";
         return mensagem; 
 
     }
