@@ -4,17 +4,42 @@
  */
 package View;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import Controller.AlunoController;
+import Model.Aluno;
+
 /**
  *
  * @author josep
  */
-public class GerAluno extends javax.swing.JFrame {
-
+public class GerAluno extends javax.swing.JFrame {   
     /**
      * Creates new form GerAluno
      */
+    //Cria uma propriedade para trazer a lista de alunos
+    private AlunoController alunoController;
     public GerAluno() {
-        initComponents();
+
+        // Cria um objeto da calasse AlunoController
+        alunoController = new AlunoController();         
+        
+        // Carregar dados na tabela
+        carregarDadosNaTabela(); 
+
+        initComponents(); // Inicializa os componentes da GUI      
+
+    }
+
+    // Método para carregar os dados na tabela
+    private void carregarDadosNaTabela() {
+        ArrayList<Aluno> alunos = alunoController.getAlunos();
+        DefaultTableModel model = (DefaultTableModel) ga_TabAlunos.getModel();
+        model.setRowCount(0); // Limpa a tabela antes de adicionar novos dados
+
+        for (Aluno aluno : alunos) {
+            model.addRow(new Object[]{aluno.getId(), aluno.getNome(), aluno.getCpf(), aluno.getIdade(), aluno.getCurso(), aluno.getFase()});
+        }
     }
 
     /**
@@ -56,7 +81,7 @@ public class GerAluno extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Id", "Nome", "CPF", "Idade", "Curso", "Serie", "Telefone", "Endereço"
+                "Id", "Nome", "CPF", "Idade", "Curso", "Serie"
             }
         ) {
             Class[] types = new Class [] {
