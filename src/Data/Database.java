@@ -14,35 +14,49 @@ public class Database {
     static final String JDBC_DRIVE = "com.mysql.cj.jdbc.Driver";
     static final String URL = "jdbc:mysql://localhost:3306/cadalunobase";
     static final String USER = "root";
-    static final String PASS = "Java2@24";    
+    static final String PASS = "admin";    
 
     // Propriedades de conexão com o banco de dados
     static Connection dbconn = null;
     static Statement sqlmgr = null;
     static ResultSet rs = null;
+    public static String mensagem;
     
-    public static void connection() {
+    public static Connection getconnection() throws SQLException {
         // Teste de conexão com o banco de dados
+        if (dbconn == null|| dbconn.isClosed()) {
+            connection();
+        }
+        return dbconn;        
+    }
+
+    public static void connection() throws SQLException{
         try {
             // Conectando ao banco de dados
+            Class.forName("com.mysql.cj.jdbc.Driver");
             dbconn = DriverManager.getConnection(URL, USER, PASS);
             System.out.println("Conectado ao banco de dados com sucesso em: "+URL);
             // Cria objeto de manipulação de SQL
             sqlmgr=dbconn.createStatement(); 
-        } catch (SQLException e) {
-            System.out.println("Erro ao conectar ao banco de dados: " + e.getMessage());
+        } catch (SQLException | ClassNotFoundException e) {
+            mensagem= "Erro ao conectar ao banco de dados: " + e.getMessage();
+            System.out.println(mensagem);
+            CloseDatabase();
         }
+
     }
 
     //Finaliza o banco de dados e a conexão
-    public void CloseDatabase() throws SQLException{
+    public static void CloseDatabase() throws SQLException{
         try {
             // Fechando a conexão com o banco de dados
-            sqlmgr.close();
-            dbconn.close();            
+            if (rs != null) rs.close();
+            if (sqlmgr!= null) sqlmgr.close();
+            if (dbconn != null) dbconn.close();            
             System.out.println("Conexão com o banco de dados fechada com sucesso!");
         } catch (SQLException e) {
-            System.out.println("Erro ao fechar a conexão com o banco de dados: " + e.getMessage());
+            mensagem="Erro ao fechar a conexão com o banco de dados: " + e.getMessage();
+            System.out.println(mensagem);
         }
     }
 
@@ -53,7 +67,9 @@ public class Database {
             sqlmgr.executeUpdate(sql);  
             //Trata as excessões          
         } catch (SQLException e) {
-            System.out.println("Erro ao inserir dados no banco de dados: " + e.getMessage());
+            mensagem="Erro ao inserir dados no banco de dados: " + e.getMessage();
+            System.out.println(mensagem);
+            return mensagem;
         }
         System.out.println("Dados inseridos com sucesso! - "+sql);
         return "Dados inseridos com sucesso!";
@@ -66,7 +82,9 @@ public class Database {
             sqlmgr.executeUpdate(sql);
 
         } catch (SQLException e) {
-            System.out.println("Erro ao atualizar dados no banco de dados: " + e.getMessage());
+            mensagem="Erro ao atualizar dados no banco de dados: " + e.getMessage();
+            System.out.println(mensagem);
+            return mensagem;
         }
         return "Dados atualizados com sucesso!";
     }
@@ -78,19 +96,22 @@ public class Database {
             sqlmgr.executeUpdate(sql);
 
         } catch (SQLException e) {
-            System.out.println("Erro ao deletar dados no banco de dados: " + e.getMessage());
+            mensagem="Erro ao deletar dados no banco de dados: " + e.getMessage();
+            System.out.println(mensagem);
+            return mensagem;
         }
         return "Dados deletados com sucesso!";
     }
 
     //Executa uma consulta no banco de dados via sql
-    public ResultSet SelectData(String sql) {
+    public static ResultSet SelectData(String sql) {
         try {
             // Executando consulta no banco de dados            
             rs = sqlmgr.executeQuery(sql);
 
         } catch (SQLException e) {
-            System.out.println("Erro ao executar consulta no banco de dados: " + e.getMessage());
+            mensagem="Erro ao executar consulta no banco de dados: " + e.getMessage();
+            System.out.println(mensagem);
         }
         return rs;
     }

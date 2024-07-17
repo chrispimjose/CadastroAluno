@@ -4,6 +4,11 @@
  */
 package View;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.sql.SQLException;
+
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import Controller.InsereAluno;
@@ -18,7 +23,26 @@ public class CadAluno extends javax.swing.JFrame {
     /**
      * Creates new form CadAluno
      */
+     // Configurações da janela GerAluno
+
     public CadAluno() {
+        setLocationRelativeTo(null);
+        setTitle("Cadastro de Alunos");
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                // Lógica para retornar à TelaPrincipal
+                // Voltar para Tela Principal
+                TelaPrincipal nj = new TelaPrincipal();
+                nj.setVisible(true);
+                // Centraliza o frame no centro da tela
+                nj.setLocationRelativeTo(null);   
+                dispose(); // Fecha a janela
+        
+            }
+        });
+        
         initComponents();
     }
 
@@ -73,7 +97,11 @@ public class CadAluno extends javax.swing.JFrame {
         ca_InserirDados.setText("Inserir");
         ca_InserirDados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ca_InserirDadosActionPerformed(evt);
+                try {
+                    ca_InserirDadosActionPerformed(evt);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -114,27 +142,25 @@ public class CadAluno extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ca_NomeAluno)
+                    .addComponent(ca_IdadeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ca_SerieAluno, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ca_CursoAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ca_CPF, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(ca_NomeAluno)
-                            .addComponent(ca_IdadeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ca_SerieAluno, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ca_CursoAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ca_CPF, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
+                        .addGap(30, 30, 30)
                         .addComponent(ca_InserirDados, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(99, 99, 99)
+                        .addGap(81, 81, 81)
                         .addComponent(ca_Novo, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
@@ -181,7 +207,7 @@ public class CadAluno extends javax.swing.JFrame {
 
     }//GEN-LAST:event_ca_VoltarPrincActionPerformed
 
-    private void ca_InserirDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ca_InserirDadosActionPerformed
+    private void ca_InserirDadosActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_ca_InserirDadosActionPerformed
         // Insere os dados no Banco de dados
 
         /*
@@ -215,11 +241,10 @@ public class CadAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_ca_InserirDadosActionPerformed
 
     private void ca_CPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ca_CPFActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_ca_CPFActionPerformed
 
     private void ca_SerieAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ca_SerieAlunoActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_ca_SerieAlunoActionPerformed
 
     private void ca_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ca_NovoActionPerformed

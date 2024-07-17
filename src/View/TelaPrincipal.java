@@ -7,6 +7,8 @@ package View;
 import javax.swing.*;
 import static javax.swing.JOptionPane.*;
 
+import java.sql.SQLException;
+
 /**
  *
  * @author josep
@@ -17,6 +19,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
      * Creates new form TelaPrincipal
      */
     public TelaPrincipal() {
+        // Inicializa os componentes da tela
         initComponents();
     }
 
@@ -58,7 +61,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tp_ButtonGerAlunos.setText("Abrir Gerenciador de Alunos");
         tp_ButtonGerAlunos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tp_ButtonGerAlunosActionPerformed(evt);
+                try {
+                    tp_ButtonGerAlunosActionPerformed(evt);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -87,7 +94,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tp_GerAluno.setText("Gerenciador de Alunos");
         tp_GerAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tp_GerAlunoActionPerformed(evt);
+                try {
+                    tp_GerAlunoActionPerformed(evt);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         });
         jMenu1.add(tp_GerAluno);
@@ -186,7 +197,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         nj.setLocationRelativeTo(null);  
     }//GEN-LAST:event_tp_CadAlunoActionPerformed
 
-    private void tp_ButtonGerAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tp_ButtonGerAlunosActionPerformed
+    private void tp_ButtonGerAlunosActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_tp_ButtonGerAlunosActionPerformed
         // Abre Gerenciador de alunos
          GerAluno nj = new GerAluno();
         nj.setVisible(true);
@@ -195,7 +206,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_tp_ButtonGerAlunosActionPerformed
 
-    private void tp_GerAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tp_GerAlunoActionPerformed
+    private void tp_GerAlunoActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_tp_GerAlunoActionPerformed
        // Abre Gerenciador de alunos
         GerAluno nj = new GerAluno();
         nj.setVisible(true);

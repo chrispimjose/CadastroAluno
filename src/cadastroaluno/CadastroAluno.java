@@ -11,7 +11,7 @@ import javax.swing.JFrame;
  *
  * @author josep
  */
-public class CadastroAluno {
+public class CadastroAluno extends JFrame {
 
     /**
      * @param args the command line arguments
@@ -20,13 +20,13 @@ public class CadastroAluno {
         // Classe Iniciadora do Programa        
         // Cria o objeto Tela Principal
         TelaPrincipal objetotela = new TelaPrincipal();
+        objetotela.setTitle("Cadastro de Alunos");
         //Deixar a janela visivel
         objetotela.setVisible(true);
         // Centralizar a janela Principal
         objetotela.setLocationRelativeTo(null);
         //Finalizar o programa ao clicar no X
-        objetotela.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-       // objetotela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+        objetotela.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);  
        
     }
     
